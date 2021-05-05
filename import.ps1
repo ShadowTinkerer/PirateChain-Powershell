@@ -1,0 +1,1 @@
+Import-module -Force -Global ./PirateChain
