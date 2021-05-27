@@ -1,3 +1,5 @@
+Set-StrictMode -Version 3
+$ErrorActionPreference = "Stop"
 
 . $PSScriptRoot/Common.ps1
 . $PSScriptRoot/New-Address.ps1
@@ -11,6 +13,9 @@
 . $PSScriptRoot/Get-ViewingKey.ps1
 . $PSScriptRoot/Get-SpendingKey.ps1
 . $PSScriptRoot/Send-Single.ps1
+. $PSScriptRoot/Send-Many.ps1
+. $PSScriptRoot/Import-ViewingKey.ps1
+. $PSScriptRoot/Import-SpendingKey.ps1
 . $PSScriptRoot/Get-Transaction.ps1
 
 Export-ModuleMember -Function Select-AddressString
@@ -26,5 +31,9 @@ Export-ModuleMember -Function Get-TransactionsByAddress
 Export-ModuleMember -Function Get-ViewingKey
 Export-ModuleMember -Function Get-SpendingKey
 Export-ModuleMember -Function Get-Transaction
+Export-ModuleMember -Function Import-ViewingKey
+Export-ModuleMember -Function Import-SpendingKey
 
 Export-ModuleMember -Function Send-Single
+Export-ModuleMember -Function Send-Many
+Export-ModuleMember -Function Convert-Recipient
