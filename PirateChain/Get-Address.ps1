@@ -5,7 +5,10 @@ function Get-Address {
         $Index,
     
         [Switch]
-        $ExcludeWatchOnly
+        $ExcludeWatchOnly,
+
+        [Switch]
+        $WithNonZeroBalance
     )
 
     $watchOnlyParam = $ExcludeWatchOnly ? "false" : "true"
@@ -18,10 +21,16 @@ function Get-Address {
         $addresses = $records
     }
 
-    $addresses | Foreach-Object {
+    $addressObjects = $addresses | Foreach-Object {
         [PSCustomObject] @{
             "Address" = $_
             "Balance" = Get-AddressBalance $_
         }
     }
+
+    if($WithNonZeroBalance) {
+      $addressObjects = $addressObjects | Where-Object { $_.Balance -ge $ARRTOSHI }
+    }
+
+    return $addressObjects
 }
