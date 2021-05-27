@@ -1,6 +1,7 @@
 function Send-Single {
   param(
     [Parameter(Mandatory)]
+    [string]
     $FromAddress,
 
     [Parameter(Mandatory)]
@@ -16,15 +17,15 @@ function Send-Single {
     [Switch]
     $NoWaitForCompletion
   )
-
-  $memoHex = $Memo ? [Convert]::ToHexString([Text.Encoding]::UTF8.GetBytes($Memo)) : ""
-  $recipients = @(
-    @{
-      "address" = $ToAddress
-      "amount"  = "$Amount"
-      "memo"    = $memoHex
-    }
-  )
+  
+  $recipient = @{
+    "address" = $ToAddress
+    "amount"  = "$Amount"
+  }
+  if($Memo) {
+    $recipient["memo"] = [Convert]::ToHexString([Text.Encoding]::UTF8.GetBytes($Memo))
+  }
+  $recipients = @($recipient)
   $recipientsJson = $recipients | ConvertTo-RpcJsonArray
   $args = @(
     "z_sendmany"
@@ -32,6 +33,9 @@ function Send-Single {
     $recipientsJson
   )
   $OpId = pirate-cli @args
+  if(!$?) {
+    return
+  }
 
   if (!$NoWaitForCompletion) {
     while (1) {
