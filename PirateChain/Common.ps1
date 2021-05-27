@@ -1,3 +1,5 @@
+$ARRTOSHI = 0.000001
+
 function ConvertTo-RpcJsonArray {
     param(
         [Parameter(ValueFromPipeline)]
