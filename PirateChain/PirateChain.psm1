@@ -2,6 +2,9 @@ Set-StrictMode -Version 3
 $ErrorActionPreference = "Stop"
 
 . $PSScriptRoot/Utilities.ps1
+. $PSScriptRoot/Invoke-PirateCli.ps1
+. $PSScriptRoot/Select-AddressString.ps1
+
 . $PSScriptRoot/New-Address.ps1
 . $PSScriptRoot/Get-Address.ps1
 . $PSScriptRoot/Get-AddressBalance.ps1
