@@ -19,8 +19,12 @@ $ErrorActionPreference = "Stop"
 . $PSScriptRoot/Send-Many.ps1
 . $PSScriptRoot/Import-ViewingKey.ps1
 . $PSScriptRoot/Import-SpendingKey.ps1
+. $PSScriptRoot/Export-ViewingKey.ps1
+. $PSScriptRoot/Export-SpendingKey.ps1
+. $PSScriptRoot/Export-FullAddressData.ps1
 . $PSScriptRoot/Get-Transaction.ps1
 
+Export-ModuleMember -Function Invoke-PirateCli
 Export-ModuleMember -Function Select-AddressString
 
 Export-ModuleMember -Function New-Address

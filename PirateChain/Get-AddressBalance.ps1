@@ -18,12 +18,6 @@ function Get-AddressBalance {
   )
 
   process {
-    $addressString = (Select-AddressString $Address)
-
-    $args = @(
-      "z_getbalance"
-      $addressString
-    )
-    pirate-cli @args | ConvertFrom-Json
+    Invoke-PirateCli "z_getbalance", (Select-AddressString $Address) | ConvertFrom-Json
   }
 }
