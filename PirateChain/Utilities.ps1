@@ -27,3 +27,31 @@ function Format-TimeSpan {
         ("{0}h{1}m" -f $TimeSpan.Hours, $TimeSpan.Minutes)
     }
 }
+
+function Test-IsObjectWithProperty {
+  [CmdletBinding()]
+  param(
+    [Parameter(Mandatory, ValueFromPipeline)]
+    $InputObject,
+
+    [Parameter(Mandatory, Position = 0)]
+    [string]
+    $PropertyName,
+
+    [string]
+    $PropertyValue
+  )
+
+  process {
+    if($InputObject.GetType().Name -ne "PSCustomObject") {
+      return $false
+    }
+  
+    if($InputObject.PSObject.Properties.name -notcontains $PropertyName) {
+      return $false
+    }
+  
+    $isPropertyValueSpecified = $PSBoundParameters.ContainsKey("PropertyValue")
+    return $isPropertyValueSpecified ? $InputObject.PSObject.Properties[$PropertyName].Value -eq $PropertyValue : $true
+  }  
+}

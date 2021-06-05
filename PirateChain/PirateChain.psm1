@@ -2,6 +2,7 @@ Set-StrictMode -Version 3
 $ErrorActionPreference = "Stop"
 
 . $PSScriptRoot/Utilities.ps1
+. $PSScriptRoot/Test-IsAddressUsed.ps1
 . $PSScriptRoot/Invoke-PirateCli.ps1
 . $PSScriptRoot/Select-AddressString.ps1
 
@@ -26,6 +27,8 @@ $ErrorActionPreference = "Stop"
 
 Export-ModuleMember -Function Invoke-PirateCli
 Export-ModuleMember -Function Select-AddressString
+Export-ModuleMember -Function Test-IsAddressUsed
+Export-ModuleMember -Function Test-IsObjectWithProperty
 
 Export-ModuleMember -Function New-Address
 Export-ModuleMember -Function Get-Address
@@ -40,6 +43,9 @@ Export-ModuleMember -Function Get-SpendingKey
 Export-ModuleMember -Function Get-Transaction
 Export-ModuleMember -Function Import-ViewingKey
 Export-ModuleMember -Function Import-SpendingKey
+Export-ModuleMember -Function Export-ViewingKey
+Export-ModuleMember -Function Export-SpendingKey
+Export-ModuleMember -Function Export-FullAddressData
 
 Export-ModuleMember -Function Send-Single
 Export-ModuleMember -Function Send-Many
