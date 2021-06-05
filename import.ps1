@@ -1,1 +1,1 @@
-Import-module -Force -Global ./PirateChain
+Import-module -Force -Global ./PirateChain 4>$null
