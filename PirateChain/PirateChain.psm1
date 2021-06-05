@@ -1,7 +1,7 @@
 Set-StrictMode -Version 3
 $ErrorActionPreference = "Stop"
 
-. $PSScriptRoot/Common.ps1
+. $PSScriptRoot/Utilities.ps1
 . $PSScriptRoot/New-Address.ps1
 . $PSScriptRoot/Get-Address.ps1
 . $PSScriptRoot/Get-AddressBalance.ps1
